@@ -16,7 +16,6 @@ public class Car
     public String getName() {
         return nome;
     }
-
     public void setName(String name) {
         this.nome = name;
     }

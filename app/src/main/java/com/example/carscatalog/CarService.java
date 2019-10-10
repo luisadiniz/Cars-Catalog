@@ -12,6 +12,4 @@ public interface CarService {
     @GET("carro")
     Call<List<Car>> SearchCars();
 
-//    @GET("carro")
-//    Observable<List<Car>>getCars();
 }

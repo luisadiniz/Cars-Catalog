@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void OpenCarDetails(View view)
     {
-        Intent i = new Intent(this, Details.class);
+        Intent i = new Intent(this, DetailsActivity.class);
         startActivity(i);
     }
 
@@ -45,11 +45,8 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Car>>() {
             @Override
             public void onResponse(Call<List<Car>> call, Response<List<Car>> response) {
-
-                //cardItems = (ArrayList<Car>) response.body();
-                Log.v("Felipe", "Sou apaixonada por vc");
-
-                //main.PopulateList();
+                cardItems = (ArrayList<Car>) response.body();
+                main.PopulateList();
             }
             @Override
             public void onFailure(Call<List<Car>> call, Throwable t) {

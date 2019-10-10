@@ -13,11 +13,10 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="290dp"
+            android:layout_height="150dp"
             android:layout_centerInParent="true"
-            android:id="@+id/car_image"
-            android:background="@color/colorPrimary"/>
+            android:id="@+id/car_image" />
 
     </RelativeLayout>
 

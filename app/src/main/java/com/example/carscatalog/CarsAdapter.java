@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class CarsAdapter extends ArrayAdapter<Car> {
@@ -31,6 +33,9 @@ public class CarsAdapter extends ArrayAdapter<Car> {
 
         carName.setText(car.nome);
         carPrice.setText(car.preco);
+
+        Picasso.get().load(car.imagem).into(carImage);
+
 // implementar a imagem!
        return convertView;
     }

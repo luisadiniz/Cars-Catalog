@@ -9,8 +9,11 @@ import retrofit2.Call;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Request("1");
+        Request();
 
     }
 
@@ -37,27 +40,32 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    private void Request(String index){
-        Call<Car> call = new RetrofitConfig().getCarService().SearchCar(index);
-        call.enqueue(new Callback<Car>() {
+    private void Request(){
+        Call<List<Car>> call = new RetrofitConfig().getCarService().SearchCars();
+        call.enqueue(new Callback<List<Car>>() {
             @Override
-            public void onResponse(Call<Car> call, Response<Car> response) {
-                cardItems.add(response.body());
-                Log.v("AI CARALHO", "NAAAAAO");
+            public void onResponse(Call<List<Car>> call, Response<List<Car>> response) {
 
-                main.PopulateList();
+                //cardItems = (ArrayList<Car>) response.body();
+                Log.v("Felipe", "Sou apaixonada por vc");
+
+                //main.PopulateList();
             }
             @Override
-            public void onFailure(Call<Car> call, Throwable t) {
-                // tratar algum erro com um callback
-                Log.v("FAIL", "FAIL");
+            public void onFailure(Call<List<Car>> call, Throwable t) {
+
+                if (t instanceof IOException) {
+                    Log.v("Erro","this is an actual network failure");
+                }
+                else {
+                    Log.v("Fail","conversion issue! big problems :(");
+                }
             }
         });
     }
 
     public void PopulateList()
     {
-        Log.v("AI CARALHO", "AI CACETA");
         CarsAdapter carArray = new CarsAdapter(this, cardItems);
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(carArray);

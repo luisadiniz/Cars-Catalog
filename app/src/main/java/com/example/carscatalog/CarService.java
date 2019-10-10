@@ -1,11 +1,17 @@
 package com.example.carscatalog;
 
+import java.util.List;
+import java.util.Observable;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface CarService {
 
-    @GET("{id}")
-    Call<Car> SearchCar(@Path("id") String id);
+    @GET("carro")
+    Call<List<Car>> SearchCars();
+
+//    @GET("carro")
+//    Observable<List<Car>>getCars();
 }

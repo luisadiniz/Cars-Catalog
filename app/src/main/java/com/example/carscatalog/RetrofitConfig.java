@@ -13,7 +13,7 @@ public class RetrofitConfig
 
     public RetrofitConfig(){
         this.retrofit = new Retrofit.Builder()
-            .baseUrl("http://desafiobrq.herokuapp.com/v1/carro/")
+            .baseUrl("http://desafiobrq.herokuapp.com/v1/")
             .addConverterFactory(JacksonConverterFactory.create())
             .build();
 

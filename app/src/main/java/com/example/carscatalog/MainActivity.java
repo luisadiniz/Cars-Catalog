@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Request();
-
     }
 
     public void OpenCarDetails(View view)
@@ -47,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("Name", cardItems.get(itemIndex-1).nome);
         i.putExtra("Image", cardItems.get(itemIndex-1).imagem);
         i.putExtra("Description", cardItems.get(itemIndex-1).descricao);
+        i.putExtra("Price", cardItems.get(itemIndex-1).preco);
+        i.putExtra("Quantidade", cardItems.get(itemIndex-1).quantidade);
 
         startActivity(i);
     }

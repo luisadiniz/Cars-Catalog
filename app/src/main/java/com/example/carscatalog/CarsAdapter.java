@@ -30,13 +30,13 @@ public class CarsAdapter extends ArrayAdapter<Car> {
         TextView carName = (TextView) convertView.findViewById(R.id.car_name);
         TextView carPrice = (TextView) convertView.findViewById(R.id.car_price);
         ImageView carImage = (ImageView) convertView.findViewById(R.id.car_image);
+        TextView carId = (TextView) convertView.findViewById(R.id.index);
 
         carName.setText(car.nome);
-        carPrice.setText(car.preco);
-
+        carPrice.setText( "R$"+ car.preco);
+        carId.setText(car.id);
         Picasso.get().load(car.imagem).into(carImage);
 
-// implementar a imagem!
        return convertView;
     }
 }

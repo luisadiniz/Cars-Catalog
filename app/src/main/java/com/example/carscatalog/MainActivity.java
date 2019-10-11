@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import retrofit2.Call;
 import android.widget.ArrayAdapter;
@@ -37,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
     public void OpenCarDetails(View view)
     {
         Intent i = new Intent(this, DetailsActivity.class);
+        View parentView = (View)view.getParent();
+        TextView indexView = (TextView)parentView.findViewById(R.id.index);
+        int itemIndex = Integer.parseInt(indexView.getText().toString());
+
+        Log.v("Index", String.valueOf(itemIndex));
+
+        i.putExtra("Name", cardItems.get(itemIndex-1).nome);
+        i.putExtra("Image", cardItems.get(itemIndex-1).imagem);
+        i.putExtra("Description", cardItems.get(itemIndex-1).descricao);
+
         startActivity(i);
     }
 

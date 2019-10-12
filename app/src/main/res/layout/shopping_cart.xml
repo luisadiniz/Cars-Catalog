@@ -8,20 +8,6 @@
     tools:context=".ShoppingCart"
     android:orientation="vertical">
 
-    <!--<ListView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:id="@+id/cart_list_view">-->
-
-    <!--</ListView>-->
-
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:id="@+id/text">-->
-
-    <!--</TextView>-->
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,5 +16,19 @@
         android:id="@+id/button_buy"
         android:onClick="EndShopping"
         />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cart_list_view">
+
+    </ListView>
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/text">-->
+
+    <!--</TextView>-->
 
 </LinearLayout>

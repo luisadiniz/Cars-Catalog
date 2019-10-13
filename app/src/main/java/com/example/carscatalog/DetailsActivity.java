@@ -1,19 +1,22 @@
 package com.example.carscatalog;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 public class DetailsActivity extends AppCompatActivity {
 
     int quantity = 0;
-    int price = 0;
+    String price="";
     String name ="";
     String imageURL ="";
 
@@ -24,6 +27,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         SetContentClicked();
     }
+
     public void SetContentClicked(){
         Intent getLastIntent = getIntent();
 
@@ -37,6 +41,8 @@ public class DetailsActivity extends AppCompatActivity {
         ImageView carImageView = (ImageView) findViewById(R.id.car_details_image);
         imageURL = getLastIntent.getStringExtra("Image");
         Picasso.get().load(imageURL).into(carImageView);
+
+        price = getLastIntent.getStringExtra("Price");
     }
 
     public void IncrementQuantity(View view)
@@ -47,6 +53,7 @@ public class DetailsActivity extends AppCompatActivity {
     public void DecrementQuantity(View view)
     {
         quantity--;
+        if(quantity < 0){ quantity = 0;}
         display(quantity);
     }
 
@@ -57,14 +64,20 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void AddButton(View view){
 
+        if(quantity > 0){
         Intent shoppingCart = new Intent(this, ShoppingCart.class);
-        Log.v("Intent", "ABRIR CARRINHO");
 
-        shoppingCart.putExtra("Name", name);
-        shoppingCart.putExtra("Image", imageURL);
-        shoppingCart.putExtra("Price", price);
-        shoppingCart.putExtra("Quantidade", quantity);
+        for (int i = 0; i < quantity; i++)
+        {
+        CarDBHelper carDBHelper = new CarDBHelper(this);
+        DataStorage dataStorage = new DataStorage();
+        dataStorage.InsertCarValues(carDBHelper, name, imageURL, price,quantity);
+        }
 
         startActivity(shoppingCart);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Quantidade Insuficiente", Toast.LENGTH_LONG).show();
+        }
     }
 }

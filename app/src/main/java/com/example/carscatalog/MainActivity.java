@@ -11,12 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         View parentView = (View)view.getParent();
         TextView indexView = (TextView)parentView.findViewById(R.id.index);
         int itemIndex = Integer.parseInt(indexView.getText().toString());
-
-        Log.v("Index", String.valueOf(itemIndex));
 
         i.putExtra("Name", cardItems.get(itemIndex-1).nome);
         i.putExtra("Image", cardItems.get(itemIndex-1).imagem);
